@@ -33,7 +33,32 @@ In order to provide the above interface, a possible `main/1` function might look
          {output, o, {list, string}}
         ]).
 
+-define(defaults,
+        [
+         {verbose, 0},
+         {minimum, 0.1},
+         {debug, 0}
+        ]).
+         
+
 main([Args]) ->
-   {Opts, Meters} = getoptions:extract_options(Args, ?optspec),
+   {Opts, Meters} = getoptions:extract_options(Args, ?optspec, ?defaults),
    io:format("~p~n", [Opts]).
+
+.
+.
+.
+}}}
+
+Note that by providing defaults for `verbose` and `debug` they can be more easily used in tests, for example:
+
+{{{
+   V = getoptions:get_opt(verbose, Opts),
+   if
+      V > 0 -> io:format("Reading meter...", []);
+      true -> true
+   end
+   .
+   .
+   .
 }}}
