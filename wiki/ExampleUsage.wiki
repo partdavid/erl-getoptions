@@ -1,5 +1,3 @@
-#examples of how to use erl-getoptions
-
 ==Usage==
 
 {{{
@@ -18,6 +16,7 @@ readmeter reads the named meter devices, writing the meter levels that exceed th
 level onto the standard output, or the output file(s) if specified.
 }}}
 
+==Option Specification==
 In order to provide the above interface, a possible `main/1` function might look like:
 
 {{{
