@@ -1,4 +1,4 @@
-#Examples of how to use erl-getoptions
+#examples of how to use erl-getoptions
 
 ==Usage==
 
