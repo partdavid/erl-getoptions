@@ -1,0 +1,40 @@
+#Examples of how to use erl-getoptions
+
+==Usage==
+
+{{{
+readmeter [options] meter [meter ...]
+   --help                      Print usage message
+   --version                   Print version message
+   -v, --verbose               Verbose output (more -v means more verbose)
+   -d, --debug <level>         Print debug output at the given level
+   -m, --minimum <reading>     Minimum level to report (floating-point number; default 0.1)
+   -c, --config <meter>=<file> Use alternate configuration file for formatting readings
+                               (can be specified multiple times)
+   -o, --output <file>         Put output in <file>. Can be specified multiple times for
+                               multiple files.
+
+readmeter reads the named meter devices, writing the meter levels that exceed the minimum
+level onto the standard output, or the output file(s) if specified.
+}}}
+
+In order to provide the above interface, a possible `main/1` function might look like:
+
+{{{
+#!/usr/bin/env escript
+
+-define(optspec,
+        [
+         {help, boolean},
+         {version, boolean},
+         {verbose, v, count},
+         {debug, d, integer},
+         {minimum, m, float},
+         {config, c, {keylist, string}},
+         {output, o, {list, string}}
+        ]).
+
+main([Args]) ->
+   {Opts, Meters} = getoptions:extract_options(Args, ?optspec),
+   io:format("~p~n", [Opts]).
+}}}
