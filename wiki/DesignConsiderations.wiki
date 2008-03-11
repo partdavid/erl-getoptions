@@ -12,7 +12,7 @@ When an argument like `-cone` is encountered, it could be interpreted one of thr
 
 I decided against supporting long options not distinguishable from single-letter options.
 
-One way of deciding between the two is whether the `-c` option accepts an argument. If it does, you can decide on the latter interpretation, otherwise the former. That's what `getoptions` does. The other way is to interpret them "tar-style", and line up subsequent arguments in order as option arguments:
+One way of deciding between the remaining two ways is whether the `-c` option accepts an argument. If it does, you can decide on the latter interpretation, otherwise the former. That's what `getoptions` does. The other way is to interpret them "tar-style", and line up subsequent arguments in order as option arguments:
 
    * `-c -o -n -e Arg1 Arg2 Arg3` Since `-c` accepts an argument, its option argument is Arg1; the next option letter with an argument letter would take Arg2, and so on.
 
