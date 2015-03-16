@@ -1,0 +1,1 @@
+A brief module for parsing unix-style command line options in Erlang; for example, as provided by `erl -run ...` or within an escript.
